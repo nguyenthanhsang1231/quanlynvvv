@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:object="${employee}">
+    <input type="text" name="name" th:value="${employee.name}">
+    <input type="text" name="salary" th:value="${employee.salary}">
+    <button>save</button>
+</form>
+</body>
+</html>

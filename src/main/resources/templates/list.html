@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+gugug
+
+
+<form action="/employees/search" method="get">
+    <input type="text" name="name" th:value="${searchTerm}" placeholder="Search by name">
+    <button type="submit">Search</button>
+</form>
+<button><a th:href="@{/employees/sortAsc}">Sort By Salary</a></button>
+<form th:action= "@{/employees/rangeSalary}" method="post">
+    <label>
+        <input type="number" name="min" placeholder="Nhập lương thấp nhất">
+        <input type="number" name="max" placeholder="Nhập lương cao nhất">
+        <button type="submit">Tìm theo khoảng lương</button>
+    </label>
+</form>
+<div  th:each="item : ${items}">
+    <input type="hidden" th:value="${item.id}">
+    <span th:text="${item.name}"></span>
+    <span th:text="${item.salary}"></span>
+    <a th:href="@{/employees/edit/__${item.id}__}">Edit</a>
+    <a onclick="return confirm('Are you sure?')" th:href="@{/employees/delete/__${item.id}__}">delete</a>
+</div>
+
+<a href="/employees/add">ADD</a>
+</body>
+</html>
